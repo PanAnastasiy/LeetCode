@@ -1,21 +1,21 @@
 
 class Solution:
     def reverseOnlyLetters(self, s: str) -> str:
-        s = list(s)
-        left_pointer, right_pointer = 0, len(s) - 1
-        while left_pointer < len(s) // 2 < right_pointer:
-            if s[left_pointer].isalpha() and s[right_pointer].isalpha():
-                s[left_pointer], s[right_pointer] = s[right_pointer], s[left_pointer]
-                left_pointer += 1
-                right_pointer -= 1
-            elif s[left_pointer].isalpha():
-                right_pointer -= 1
-            elif s[right_pointer].isalpha():
-                left_pointer += 1
+        lst = list(s)
+        left, right = 0, len(lst) - 1
+        while left < right:
+            if lst[left].isalpha() and lst[right].isalpha():
+                lst[left], lst[right] = lst[right], lst[left]
+                left += 1
+                right -= 1
+            elif lst[left].isalpha():
+                right -= 1
+            elif lst[right].isalpha():
+                left += 1
             else:
-                left_pointer += 1
-                right_pointer -= 1
-            return ''.join(s)
+                left += 1
+                right -= 1
+        return ''.join(lst)
 
 
 print(Solution().reverseOnlyLetters("ab-cd"))
